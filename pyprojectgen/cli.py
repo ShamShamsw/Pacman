@@ -1,17 +1,25 @@
-import argparse
-from .generator import copy_template, create_venv
+import click
+from .generator import ProjectGenerator
 
-def main():
-    parser = argparse.ArgumentParser(description="Generate Python project scaffolding.")
-    parser.add_argument("name", help="Project name")
-    parser.add_argument("--template", default="script", help="Template type")
-    parser.add_argument("--venv", action="store_true", help="Create virtual environment")
-    args = parser.parse_args()
+@click.group()
+def cli():
+    pass
 
-    project_path = args.name
-    copy_template(args.template, project_path)
-    if args.venv:
-        create_venv(project_path)
+@cli.command()
+@click.argument('project_name')
+@click.option('--template', default='package', help='Template type')
+@click.option('--git/--no-git', default=False, help='Initialize git repo')
+@click.option('--venv/--no-venv', default=False, help='Create virtualenv')
+def new(project_name, template, git, venv):
+    """Create a new Python project."""
+    generator = ProjectGenerator()
+    generator.create_project(
+        name=project_name,
+        template=template,
+        git=git,
+        venv=venv
+    )
+    click.echo(f"Project {project_name} created with template {template}.")
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    cli()
