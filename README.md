@@ -1,6 +1,6 @@
-# PyProjectGen
+# Pacman
 
-**PyProjectGen** is a robust, extensible command-line tool for generating Python project scaffolding. It streamlines the process of starting new Python projects by automating structure creation, virtual environment setup, and inclusion of best-practice files. PyProjectGen is built for individual developers, teams, and organizations looking to standardize and accelerate project bootstrapping.
+**Pacman** is my Python project to streamlines the process of starting new Python projects by automating structure creation, virtual environment setup, and inclusion of best-practice files. Pacman is built for individual developers, teams, and organizations looking to standardize and accelerate project bootstrapping. However I mainly built it so I could play games without wifi.
 
 ---
 
@@ -12,7 +12,7 @@
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [Project Structure](#project-structure)
-7. [Extending PyProjectGen](#extending-pyprojectgen)
+7. [Extending Pacman](#extending-Pacman)
 8. [Testing](#testing)
 9. [Contribution Guidelines](#contribution-guidelines)
 10. [License](#license)
@@ -44,7 +44,7 @@ This project solves the tedious, error-prone process of setting up a new Python 
 
 - **Purpose**: Handles all user interaction and input validation.
 - **Technology**: [Click](https://click.palletsprojects.com/) (or `argparse` for minimal dependencies).
-- **Location**: `pyprojectgen/cli.py`
+- **Location**: `Pacman/cli.py`
 
 ### 2. Core Logic Layer
 
@@ -52,7 +52,7 @@ This project solves the tedious, error-prone process of setting up a new Python 
 - **Key Components**:
     - Template engine (Jinja2)
     - File operations (copy, render, variable substitution)
-- **Location**: `pyprojectgen/generator.py`
+- **Location**: `Pacman/generator.py`
 
 ### 3. Template Layer
 
@@ -60,12 +60,12 @@ This project solves the tedious, error-prone process of setting up a new Python 
 - **Structure**:
     - Each template is a directory with a defined structure and meta-information.
     - Template variables (e.g., project name, author) are filled at runtime.
-- **Location**: `pyprojectgen/templates/`
+- **Location**: `Pacman/templates/`
 
 ### 4. Utilities
 
 - **Purpose**: Supporting modules for OS-level tasks, logging, validation, etc.
-- **Location**: `pyprojectgen/utils/`
+- **Location**: `Pacman/utils/`
 
 ### 5. Testing
 
@@ -78,10 +78,10 @@ This project solves the tedious, error-prone process of setting up a new Python 
 ## Installation
 
 ```bash
-pip install pyprojectgen
+pip install Pacman
 # or from source:
-git clone https://github.com/yourorg/pyprojectgen.git
-cd pyprojectgen
+git clone https://github.com/yourorg/Pacman.git
+cd Pacman
 pip install .
 ```
 
@@ -92,19 +92,19 @@ pip install .
 **Basic Example:**
 
 ```bash
-pyprojectgen new my_project --template package --git --venv
+Pacman new my_project --template package --git --venv
 ```
 
 **Help:**
 
 ```bash
-pyprojectgen --help
+Pacman --help
 ```
 
 **Available Templates:**
 
 ```bash
-pyprojectgen list-templates
+Pacman list-templates
 ```
 
 ---
@@ -112,9 +112,9 @@ pyprojectgen list-templates
 ## Project Structure
 
 ```plaintext
-pyprojectgen/
+Pacman/
 │
-├── pyprojectgen/
+├── Pacman/
 │   ├── __init__.py
 │   ├── cli.py              # CLI Interface
 │   ├── generator.py        # Core logic for generation
@@ -159,9 +159,9 @@ Variables like `{{project_slug}}` are replaced with user input.
 
 ---
 
-## Extending PyProjectGen
+## Extending Pacman
 
-You can add your own templates to `~/.pyprojectgen/templates/` or a shared templates directory.
+You can add your own templates to `~/.Pacman/templates/` or a shared templates directory.
 - Templates are simple directory trees with Jinja2-style variables.
 
 ---
